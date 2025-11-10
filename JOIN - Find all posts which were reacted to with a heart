@@ -1,0 +1,9 @@
+/*Find all posts which were reacted to with a heart. For such posts output all columns from facebook_posts table.*/
+
+
+
+
+SELECT DISTINCT po.* FROM facebook_posts po
+LEFT JOIN facebook_reactions re
+ON po.post_id = re.post_id
+WHERE reaction = 'heart';
