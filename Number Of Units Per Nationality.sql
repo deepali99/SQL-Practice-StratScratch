@@ -1,0 +1,18 @@
+/*
+We have data on rental properties and their owners. Write a query that figures out how many different apartments (use unit_id) are owned by people under 30, broken down by their nationality. 
+We want to see which nationality owns the most apartments, so make sure to sort the results accordingly.
+https://platform.stratascratch.com/coding/10156-number-of-units-per-nationality?code_type=3
+*/
+
+
+SELECT 
+    nationality, 
+    COUNT(DISTINCT unit_id) AS apartment_count
+FROM airbnb_units unit JOIN airbnb_hosts host 
+ON unit.host_id = host.host_id
+WHERE 
+    age<30 AND 
+    unit_type = 'Apartment'
+GROUP BY nationality
+ORDER BY apartment_count DESC
+    
